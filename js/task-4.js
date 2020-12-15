@@ -1,21 +1,35 @@
-/*Напиши функцию formatString(string) которая принимает строку и форматирует ее если необходимо.
+//Напиши функцию countTotalSalary(employees) принимающую объект зарплат.
+//Функция считает общую сумму запрплаты работников и возращает ее.
+//Каждое поле объекта, передаваемого в функцию,
+// имеет вид "имя": "зарплата".
 
-Если длина строки не превышает 40 символов, функция возвращает ее в исходном виде.
-Если длина больше 40 символов, то функция обрезает строку до 40-ка символов и добавляет в конец строки троеточие '...',
- после чего возвращает укороченную версию.*/
-const formatString = function (string) {
-  const newString = string.length > 40 ? string.substring(0, 41) + "..." : string;
-  return string;
+const countTotalSalary = function (employees) {
+  const values = Object.values(employees);
+  console.log(values);
+  let totalSalary = 0;
+  for (const value of values) {
+    totalSalary += value;
+  }
+  return totalSalary;
 };
 
-console.log(formatString("Curabitur ligula sapien, tincidunt non."));
-// вернется оригинальная строка
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(countTotalSalary({})); // 0
 
-console.log(formatString("Vestibulum facilisis, purus nec pulvinar iaculis."));
-// вернется форматированная строка
+console.log(
+  countTotalSalary({
+    mango: 100,
+    poly: 150,
+    alfred: 80,
+  })
+); // 330
 
-console.log(formatString("Curabitur ligula sapien."));
-// вернется оригинальная строка
-
-console.log(formatString("Nunc sed turpis. Curabitur a felis in nunc fringilla tristique."));
-// вернется форматированная строка
+console.log(
+  countTotalSalary({
+    kiwi: 200,
+    lux: 50,
+    chelsy: 150,
+  })
+); // 400

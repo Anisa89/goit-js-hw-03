@@ -1,14 +1,31 @@
-const checkForSpam = function (message) {
-  const checkMessage = message.toLowerCase().split(" ");
-  for (let i = 0; i < checkMessage.length; i++) {
-    if (checkMessage[i].includes("spam") || checkMessage[i].includes("sale")) {
-      return true;
+//Напиши функцию getAllPropValues(arr, prop),
+//которая получает массив объектов и имя свойства.
+//Возвращает массив значений определенного свойства prop из каждого объекта в массиве.
+
+const products = [
+  { name: "Радар", price: 1300, quantity: 4 },
+  { name: "Сканер", price: 2700, quantity: 3 },
+  { name: "Дроид", price: 400, quantity: 7 },
+  { name: "Захват", price: 1200, quantity: 2 },
+];
+
+const getAllPropValues = function (arr, prop) {
+  let arrayOfProperties = [];
+  for (const property of arr) {
+    if (property[prop] !== undefined) {
+      arrayOfProperties.push(property[prop]);
     }
   }
-  return false;
+
+  return arrayOfProperties;
+  // твой код
 };
 
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(getAllPropValues(products, "name")); // ['Радар', 'Сканер', 'Дроид', 'Захват']
+
+console.log(getAllPropValues(products, "quantity")); // [4, 3, 7, 2]
+
+console.log(getAllPropValues(products, "category")); // []

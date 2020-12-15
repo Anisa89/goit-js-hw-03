@@ -1,20 +1,40 @@
-/*Напиши фукцнию findLongestWord(string), которая принимает параметром произвольную строку(
-  в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.*/
+const findBestEmployee = function (employees) {
+  const employeeValue = Object.values(employees); //29,35,1,99
+  const employeeName = Object.keys(employees); //ann,david,helen,lorence
+  const maxValue = Math.max(...employeeValue); //
 
-const findLongestWord = function (string) {
-  const words = string.split(" ");
-  let longestWord = words[0];
-  for (const word of words) {
-    if (word.length > longestWord.length) {
-      longestWord = word;
+  for (const name of employeeName) {
+    if (employees[name] === maxValue) {
+      return `${name}`;
     }
   }
-
-  return longestWord;
 };
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+/*
+ * Вызовы функции для проверки работоспособности твоей реализации.
+ */
+console.log(
+  findBestEmployee({
+    ann: 29,
+    david: 35,
+    helen: 1,
+    lorence: 99,
+  })
+); // lorence
 
-console.log(findLongestWord("Google do a roll")); // 'Google'
+console.log(
+  findBestEmployee({
+    poly: 12,
+    mango: 17,
+    ajax: 4,
+  })
+); // mango
 
-console.log(findLongestWord("May the force be with you")); // 'force'
+console.log(
+  findBestEmployee({
+    lux: 147,
+    david: 21,
+    kiwi: 19,
+    chelsy: 38,
+  })
+); // lux
